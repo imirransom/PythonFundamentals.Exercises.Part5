@@ -31,7 +31,7 @@ def sort_by_commit_count(list_in: List) -> List:
     :param list_in: A list where each entry is a list containing a name and the commit count corresponding to a user
     :return: The same list sorted in ascending order based on the commit count
     """
-    return sort(list_in)
+    return sorted(list_in)
 
 
 def gen_list_of_nums(n: int) -> List[int]:
@@ -54,7 +54,11 @@ def half_list(list_in: List, half: int) -> List:
     If the length of list_in is an odd number, round the half value up (hint: math.ceil()).
     :return: A list.
     """
-    pass  # remove pass statement and implement me
+    list_in = list_in / half
+    if list_in % 2 != 0:
+        return math.ceil(list_in)
+    else:
+        return list_in
 
 
 def remove_odds(list_in: List[int]) -> None:
