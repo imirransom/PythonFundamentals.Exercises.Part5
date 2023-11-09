@@ -41,8 +41,8 @@ def gen_list_of_nums(n: int) -> List[int]:
     :param n: The number of items the result should contain
     :return: A list of integers
     """
-    for i in range(0, n):
-        return i
+    for i in range(n):
+        return list(range(n))
 
 
 def half_list(list_in: List, half: int) -> List:
@@ -56,8 +56,14 @@ def half_list(list_in: List, half: int) -> List:
     """
     half_list = len(list_in) // 2
     if half_list % 2 != 0:
+        ceil(half_list)
         if half == 1:
             return list_in[:half_list]
+        elif half == 2:
+            return list_in[half_list:]
+    elif half_list % 2 == 0:
+        if half == 1:
+            return list_in[:half_list + 1]
         elif half == 2:
             return list_in[half_list:]
 
@@ -72,7 +78,6 @@ def remove_odds(list_in: List[int]) -> None:
     for i in list_in:
         if i % 2 != 0:
             list_in.remove(i)
-    return list_in
 
 
 def remove_evens(list_in: List[int]) -> None:
@@ -83,8 +88,7 @@ def remove_evens(list_in: List[int]) -> None:
     """
     for i in list_in:
         if i % 2 == 0:
-            list_in[i].remove()
-    return list_in
+            list_in.remove(i)
 
 # python3 -m unittest test_list_utils.py
 
@@ -108,7 +112,5 @@ def multiply_list(list_in: List, scalar: int) -> List:
     :param scalar: An integer
     :return: A list
     """
-    new_list = []
-    for i in list_in:
-        new_list = i * scalar
+    new_list = list_in * scalar
     return new_list
