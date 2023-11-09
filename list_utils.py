@@ -21,7 +21,7 @@ def print_list_items(list_in: List) -> None:
     :return: None
     """
     for i in list_in:
-        return i
+        print(i)
 
 
 def sort_by_commit_count(list_in: List) -> List:
@@ -50,15 +50,17 @@ def half_list(list_in: List, half: int) -> List:
     Given a list, this function will return a new list that contains half of the items in the list_in parameter.
 
     :param list_in: The list which will be used to generate the return value
-    :param half: 1 will use the first half of the input list. 2 will use the second half of the input list.
+    :param if half is 1 will use the first half of the input list. if half is 2 will use the second half of the input list.
     If the length of list_in is an odd number, round the half value up (hint: math.ceil()).
     :return: A list.
     """
-    list_in = list_in / half
-    if list_in % 2 != 0:
-        return math.ceil(list_in)
-    else:
-        return list_in
+    half_list = len(list_in) // 2
+    if half_list % 2 != 0:
+        if half == 1:
+            return list_in[:half_list]
+        elif half == 2:
+            return list_in[half_list:]
+
 
 
 def remove_odds(list_in: List[int]) -> None:
@@ -69,7 +71,8 @@ def remove_odds(list_in: List[int]) -> None:
     """
     for i in list_in:
         if i % 2 != 0:
-            del(i)
+            list_in.remove(i)
+    return list_in
 
 
 def remove_evens(list_in: List[int]) -> None:
@@ -80,8 +83,10 @@ def remove_evens(list_in: List[int]) -> None:
     """
     for i in list_in:
         if i % 2 == 0:
-            del(i)
+            list_in[i].remove()
+    return list_in
 
+# python3 -m unittest test_list_utils.py
 
 def concatenate_lists(list_a: List, list_b: List) -> List:
     """
